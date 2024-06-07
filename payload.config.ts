@@ -121,8 +121,8 @@ export default buildConfig({
   // for this before reaching 3.0 stable
   sharp,
   email: resendAdapter({
-        defaultFromAddress: process.env.PAYLOAD_FROM || '',
+        defaultFromAddress: process.env.RESEND_FROM || '',
         defaultFromName: 'Payload CMS',
-        apiKey: process.env.PAYLOAD_KEY || '',
+        apiKey: process.env.RESEND_KEY || '',
     }),
 })
