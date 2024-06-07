@@ -24,6 +24,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { buildConfig } from 'payload/config'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -119,4 +120,9 @@ export default buildConfig({
   // This is temporary - we may make an adapter pattern
   // for this before reaching 3.0 stable
   sharp,
+  email: resendAdapter({
+        defaultFromAddress: process.env.PAYLOAD_FROM || '',
+        defaultFromName: 'Payload CMS',
+        apiKey: process.env.PAYLOAD_KEY || '',
+    }),
 })
